@@ -3,6 +3,7 @@ import { NewTaskBar } from "./components/NewTaskBar";
 
 import "./global.css";
 import styles from "./App.module.css";
+import { TaskList } from "./components/TaskList";
 
 export function App() {
   return (
@@ -11,6 +12,8 @@ export function App() {
 
       <main className={styles.wrapper}>
         <NewTaskBar />
+
+        <TaskList />
       </main>
     </div>
   );

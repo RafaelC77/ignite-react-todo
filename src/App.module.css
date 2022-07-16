@@ -9,33 +9,3 @@
     font-size: 87.5%;
   }
 }
-
-.newTaskForm {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.newTaskForm textarea {
-  flex: 1;
-  background: var(--gray-500);
-  border: 0;
-  border-radius: 8px;
-  resize: none;
-  height: 3.375rem;
-  padding: 1rem;
-}
-
-.newTaskForm button {
-  padding: 1rem;
-  border-radius: 8px;
-  border: 0;
-  background: var(--blue-dark);
-  color: var(--gray-100);
-
-  font-weight: 700;
-  font-size: 0.875rem;
-
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-}

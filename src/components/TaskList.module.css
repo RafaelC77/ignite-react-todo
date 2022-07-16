@@ -1,0 +1,101 @@
+.taskList {
+  margin-top: 4rem;
+}
+
+.tasksInfo {
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: var(--gray-200);
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.createdTasks b {
+  color: var(--blue);
+  margin-right: 0.5rem;
+}
+
+.createdTasks span,
+.finishedTasks span {
+  background: var(--gray-400);
+  padding: 0.125rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+}
+
+.finishedTasks b {
+  color: var(--purple);
+  margin-right: 0.5rem;
+}
+
+.taskList ul {
+  margin-top: 1.5rem;
+}
+
+.taskList li {
+  background: var(--gray-500);
+  border: 1px solid var(--gray-400);
+  padding: 1rem;
+  border-radius: 8px;
+
+  font-size: 0.875rem;
+
+  display: flex;
+  gap: 0.75rem;
+}
+
+li + li {
+  margin-top: 0.75rem;
+}
+
+input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1.09rem;
+  height: 1.09rem;
+  border: 2px solid var(--blue);
+  border-radius: 9999px;
+
+  display: grid;
+  place-content: center;
+}
+
+input[type="checkbox"]::before {
+  content: "";
+  width: 1.09rem;
+  height: 1.09rem;
+  border-radius: 999px;
+  transform: scale(0);
+  transition: 120ms transform;
+  background: var(--purple-dark);
+}
+
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+input[type="checkbox"]:checked::after {
+  content: "";
+  position: absolute;
+  justify-self: center;
+  align-self: center;
+  width: 0.2rem;
+  height: 0.4rem;
+  border: solid white;
+  border-width: 0 0.0625rem 0.0625rem 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg) translateY(-0.0625rem);
+}
+
+.finishedTask {
+  color: var(--gray-300);
+  text-decoration: line-through;
+}
+
+button {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
