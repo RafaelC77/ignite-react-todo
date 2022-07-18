@@ -23,7 +23,7 @@ export function App() {
       <main className={styles.wrapper}>
         <NewTaskBar taskList={taskList} onCreateNewTask={setTaskList} />
 
-        <TaskList taskList={taskList} onCompleteTask={setTaskList} />
+        <TaskList taskList={taskList} onSetTask={setTaskList} />
       </main>
     </div>
   );

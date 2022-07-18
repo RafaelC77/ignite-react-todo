@@ -7,10 +7,10 @@ interface Task {
 }
 interface TaskListProps {
   taskList: Task[];
-  onCompleteTask: (taskList: Task[]) => void;
+  onSetTask: (taskList: Task[]) => void;
 }
 
-export function TaskList({ taskList, onCompleteTask }: TaskListProps) {
+export function TaskList({ taskList, onSetTask }: TaskListProps) {
   function handleTaskCompletion(taskId: string) {
     const previousTaskList = [...taskList];
 
@@ -18,7 +18,17 @@ export function TaskList({ taskList, onCompleteTask }: TaskListProps) {
       task.id === taskId ? { ...task, isComplete: !task.isComplete } : task
     );
 
-    onCompleteTask(updatedTaskList);
+    onSetTask(updatedTaskList);
+  }
+
+  function handleDeleteTask(taskId: string) {
+    const previousTaskList = [...taskList];
+
+    const updatedTaksList = previousTaskList.filter(
+      (task) => task.id !== taskId
+    );
+
+    onSetTask(updatedTaksList);
   }
 
   return (
@@ -50,7 +60,7 @@ export function TaskList({ taskList, onCompleteTask }: TaskListProps) {
               >
                 {task.description}
               </label>
-              <button>
+              <button onClick={() => handleDeleteTask(task.id)}>
                 <img src="src/assets/trashIcon.svg" />
               </button>
             </li>
