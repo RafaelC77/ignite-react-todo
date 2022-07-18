@@ -50,12 +50,12 @@ li + li {
 }
 
 input[type="checkbox"] {
-  -webkit-appearance: none;
   appearance: none;
   width: 1.09rem;
   height: 1.09rem;
   border: 2px solid var(--blue);
   border-radius: 9999px;
+  cursor: pointer;
 
   display: grid;
   place-content: center;
@@ -82,11 +82,11 @@ input[type="checkbox"]:checked::after {
   align-self: center;
   width: 0.2rem;
   height: 0.4rem;
-  border: solid white;
+  border: solid var(--gray-100);
   border-width: 0 0.0625rem 0.0625rem 0;
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
-  transform: rotate(45deg) translateY(-0.0625rem);
+  transform: rotate(45deg) translateY(-0.0625rem) translateX(-0.0625rem);
 }
 
 .finishedTask {
