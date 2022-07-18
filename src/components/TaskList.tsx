@@ -11,6 +11,16 @@ interface TaskListProps {
 }
 
 export function TaskList({ taskList, onSetTask }: TaskListProps) {
+  const totalCompletedTasks = taskList.reduce((acc, task) => {
+    let completedTasks = acc;
+
+    if (task.isComplete === true) {
+      completedTasks++;
+    }
+
+    return completedTasks;
+  }, 0);
+
   function handleTaskCompletion(taskId: string) {
     const previousTaskList = [...taskList];
 
@@ -36,30 +46,30 @@ export function TaskList({ taskList, onSetTask }: TaskListProps) {
       <div className={styles.tasksInfo}>
         <span className={styles.createdTasks}>
           <b>Tarefas criadas</b>
-          <span>5</span>
+          <span>{taskList.length}</span>
         </span>
 
         <span className={styles.finishedTasks}>
           <b>Concluídas</b>
-          <span>2 de 5</span>
+          <span>
+            {totalCompletedTasks} de {taskList.length}
+          </span>
         </span>
       </div>
 
       <ul>
         {taskList.map((task) => {
           return (
-            <li key={task.id}>
+            <li
+              key={task.id}
+              className={task.isComplete ? styles.finishedTask : ""}
+            >
               <input
                 type="checkbox"
                 id={task.id}
                 onClick={() => handleTaskCompletion(task.id)}
               />
-              <label
-                htmlFor={task.id}
-                className={task.isComplete ? styles.finishedTask : ""}
-              >
-                {task.description}
-              </label>
+              <label htmlFor={task.id}>{task.description}</label>
               <button onClick={() => handleDeleteTask(task.id)}>
                 <img src="src/assets/trashIcon.svg" />
               </button>
