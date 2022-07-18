@@ -1,39 +1,26 @@
 import styles from "./TaskList.module.css";
 
-const tasks = [
-  {
-    id: "1",
-    description:
-      "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.",
-    isFinished: false,
-  },
-  {
-    id: "2",
-    description:
-      "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.",
-    isFinished: false,
-  },
-  {
-    id: "3",
-    description:
-      "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.",
-    isFinished: false,
-  },
-  {
-    id: "4",
-    description:
-      "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.",
-    isFinished: true,
-  },
-  {
-    id: "5",
-    description:
-      "Integer urna interdum massa libero auctor neque turpis turpis semper. Duis vel sed fames integer.",
-    isFinished: true,
-  },
-];
+interface Task {
+  id: string;
+  description: string;
+  isComplete: boolean;
+}
+interface TaskListProps {
+  taskList: Task[];
+  onCompleteTask: (taskList: Task[]) => void;
+}
 
-export function TaskList() {
+export function TaskList({ taskList, onCompleteTask }: TaskListProps) {
+  function handleTaskCompletion(taskId: string) {
+    const previousTaskList = [...taskList];
+
+    const updatedTaskList = previousTaskList.map((task) =>
+      task.id === taskId ? { ...task, isComplete: !task.isComplete } : task
+    );
+
+    onCompleteTask(updatedTaskList);
+  }
+
   return (
     <div className={styles.taskList}>
       <div className={styles.tasksInfo}>
@@ -49,13 +36,17 @@ export function TaskList() {
       </div>
 
       <ul>
-        {tasks.map((task) => {
+        {taskList.map((task) => {
           return (
             <li key={task.id}>
-              <input type="checkbox" id={task.id} />
+              <input
+                type="checkbox"
+                id={task.id}
+                onClick={() => handleTaskCompletion(task.id)}
+              />
               <label
                 htmlFor={task.id}
-                className={task.isFinished ? styles.finishedTask : ""}
+                className={task.isComplete ? styles.finishedTask : ""}
               >
                 {task.description}
               </label>

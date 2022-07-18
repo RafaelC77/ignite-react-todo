@@ -16,8 +16,6 @@ interface Task {
 export function App() {
   const [taskList, setTaskList] = useState<Task[]>([]);
 
-  console.log(taskList);
-
   return (
     <div>
       <Header />
@@ -25,7 +23,7 @@ export function App() {
       <main className={styles.wrapper}>
         <NewTaskBar taskList={taskList} onCreateNewTask={setTaskList} />
 
-        <TaskList />
+        <TaskList taskList={taskList} onCompleteTask={setTaskList} />
       </main>
     </div>
   );
