@@ -60,6 +60,10 @@ input[type="checkbox"] {
   place-content: center;
 }
 
+input[type="checkbox"]:hover {
+  border-color: var(--blue-dark);
+}
+
 input[type="checkbox"]::before {
   content: "";
   width: 1.09rem;
@@ -72,6 +76,10 @@ input[type="checkbox"]::before {
 
 input[type="checkbox"]:checked::before {
   transform: scale(1);
+}
+
+input[type="checkbox"]:hover::before {
+  background: var(--purple);
 }
 
 input[type="checkbox"]:checked::after {
@@ -94,9 +102,28 @@ input[type="checkbox"]:checked::after {
   order: 2;
 }
 
-button {
+.deleteButton {
+  width: 1.5rem;
+  height: 1.5rem;
   margin-left: auto;
   background: transparent;
   border: 0;
+  border-radius: 4px;
   cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-items: center;
+}
+
+.deleteButton:hover {
+  background: var(--gray-400);
+}
+
+.deleteButton svg {
+  color: var(--gray-300);
+}
+
+.deleteButton svg:hover {
+  color: var(--danger);
 }
